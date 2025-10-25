@@ -1,0 +1,274 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PPP Mentoria API",
+    "version": "1.0.0",
+    "description": "API Rest para busca de jogadores de futebol."
+  },
+  "paths": {
+    "/admin": {
+      "post": {
+        "summary": "Registro de admin",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": { "type": "string" },
+                  "email": { "type": "string" },
+                  "senha": { "type": "string" }
+                },
+                "required": ["nome", "email", "senha"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Admin cadastrado" },
+          "400": { "description": "Dados obrigatórios ausentes" },
+          "409": { "description": "Admin já cadastrado" }
+        }
+      }
+    },
+    "/executivo": {
+      "post": {
+        "summary": "Registro de executivo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": { "type": "string" },
+                  "email": { "type": "string" },
+                  "senha": { "type": "string" },
+                  "clube": { "type": "string" }
+                },
+                "required": ["nome", "email", "senha", "clube"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Executivo cadastrado" },
+          "400": { "description": "Dados obrigatórios ausentes" },
+          "409": { "description": "Executivo já cadastrado" }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login de usuário (admin ou executivo)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "senha": { "type": "string" }
+                },
+                "required": ["email", "senha"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login realizado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "description": "Credenciais inválidas" }
+        }
+      }
+    },
+    "/jogadores": {
+      "get": {
+        "summary": "Consulta de jogadores (executivo)",
+        "parameters": [
+          { "name": "nomeCompleto", "in": "query", "schema": { "type": "string" } },
+          { "name": "apelido", "in": "query", "schema": { "type": "string" } },
+          { "name": "clubeAtual", "in": "query", "schema": { "type": "string" } }
+        ],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Lista de jogadores",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Jogador" }
+                }
+              }
+            }
+          },
+          "401": { "description": "Não autorizado" },
+          "403": { "description": "Acesso negado para este papel" }
+        }
+      },
+      "post": {
+        "summary": "Cadastro de jogador (admin)",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Jogador" }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Jogador cadastrado" },
+          "401": { "description": "Não autorizado" },
+          "403": { "description": "Acesso negado para este papel" }
+        }
+      }
+    },
+    "/caracteristicas": {
+      "get": {
+        "summary": "Lista de características disponíveis",
+        "responses": {
+          "200": {
+            "description": "Lista de características",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Caracteristica" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastro de característica (admin)",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": { "type": "string" }
+                },
+                "required": ["nome"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Característica cadastrada" },
+          "400": { "description": "Nome obrigatório" },
+          "409": { "description": "Característica já cadastrada" },
+          "401": { "description": "Não autorizado" },
+          "403": { "description": "Acesso negado para este papel" }
+        }
+      }
+    },
+    "/posicoes": {
+      "get": {
+        "summary": "Lista de posições cadastradas",
+        "responses": {
+          "200": {
+            "description": "Lista de posições",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Posicao" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastro de posição (admin)",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": { "type": "string" }
+                },
+                "required": ["nome"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Posição cadastrada" },
+          "400": { "description": "Nome obrigatório" },
+          "409": { "description": "Posição já cadastrada" },
+          "401": { "description": "Não autorizado" },
+          "403": { "description": "Acesso negado para este papel" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "Jogador": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "nomeCompleto": { "type": "string" },
+          "apelido": { "type": "string" },
+          "dataNascimento": { "type": "string", "format": "date" },
+          "inicioContrato": { "type": "string", "format": "date" },
+          "fimContrato": { "type": "string", "format": "date" },
+          "multaRescisoria": { "type": "number" },
+          "clubeAtual": { "type": "string" },
+          "caracteristicas": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "posicoes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["id", "nomeCompleto", "apelido", "dataNascimento", "inicioContrato", "fimContrato", "multaRescisoria", "clubeAtual"]
+      },
+      "Caracteristica": {
+        "type": "object",
+        "properties": {
+          "nome": { "type": "string" }
+        },
+        "required": ["nome"]
+      },
+      "Posicao": {
+        "type": "object",
+        "properties": {
+          "nome": { "type": "string" }
+        },
+        "required": ["nome"]
+      }
+    }
+  }
+}
