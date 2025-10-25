@@ -1,7 +1,7 @@
-# PPP Mentoria API
+# API Buscar Jogadores de Futebol
 
 ## Objetivo
-API Rest para busca de jogadores de futebol, voltada para executivos de clubes.
+API Rest para busca de jogadores de futebol, voltada para Executivos de clubes.
 
 ## Funcionalidades
 - Registro de admin
@@ -19,36 +19,33 @@ API Rest para busca de jogadores de futebol, voltada para executivos de clubes.
 - `controllers/` - Lógica das rotas
 - `service/` - Serviços, banco de dados em memória e middleware de autenticação
 - `model/` - Modelos de dados
-- `recursos/` - Documentação Swagger
+- `resources/` - Documentação Swagger
 
 ## Banco de Dados
-- Utiliza armazenamento em memória para admins, executivos, jogadores, características e posições.
+- Utiliza armazenamento em memória (não persiste dados após reiniciar o servidor)
 
 ## Autenticação
-- Middleware de autenticação via Bearer token (JWT)
+Middleware de autenticação via Bearer token (JWT).
 - Admins têm acesso total
 - Executivos podem apenas consultar jogadores
 
 ## Documentação
-- Documentação Swagger disponível em `recursos/swagger.json`
-- Endpoint para visualização: `/api-docs`
+Documentação Swagger disponível em `resources/swagger.json`.
+Endpoint para visualização: [`/api-docs`](http://localhost:3000/api-docs)
 
 ## Como executar
 1. Instale as dependências:
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 2. Inicie o servidor:
-   ```bash
-   npm start
-   ```
-   (ou use `node index.js` diretamente)
-3. Acesse a documentação Swagger em `http://localhost:3000/api-docs`
+    ```bash
+    npm start
+    ```
+3. Acesse a documentação Swagger em [`http://localhost:3000/api-docs`](http://localhost:3000/api-docs)
+
+## Endpoints principais
+Consulte o arquivo `resources/swagger.yaml` para detalhes dos endpoints e modelos de dados.
 
 ## Observações
-- Não há remoção/arquivamento de jogadores.
-- Características disponíveis: ofensivo, defensivo, rápido, lento, pesado, bom de bola aérea, boa visão de jogo.
-
----
-
-Desenvolvido para mentoria PPP.
+- Este projeto é apenas para fins de demonstração e não deve ser usado em produção sem persistência de dados e segurança adequada.
