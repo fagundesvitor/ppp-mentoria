@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "PPP Mentoria API",
+    "title": "API Buscar Jogadores de Futebol",
     "version": "1.0.0",
     "description": "API Rest para busca de jogadores de futebol."
   },
