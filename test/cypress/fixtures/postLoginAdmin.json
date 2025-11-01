@@ -1,0 +1,10 @@
+{
+    "adminSucesso": {
+        "email": "julio@email.com",
+        "senha": "123"
+    },
+    "adminInvalido": {
+        "email": "juliodelima@email.com",
+        "senha": "1233"
+    }
+}

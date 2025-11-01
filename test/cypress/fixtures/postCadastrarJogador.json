@@ -1,0 +1,18 @@
+{
+  "jogador1": {
+    "nomeCompleto": "Anderson Silva",
+    "apelido": "Anderson Silva",
+    "dataNascimento": "1987-10-26",
+    "inicioContrato": "2024-01-01",
+    "fimContrato": "2027-12-31",
+    "multaRescisoria": 30.000,
+    "clubeAtual": "Ibis",
+    "caracteristicas": [
+      "Ofensivo",
+      "Rápido"
+    ],
+    "posicoes": [
+      "Volante"
+    ]
+  }
+}

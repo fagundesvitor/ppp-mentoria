@@ -1,0 +1,19 @@
+{
+  "sucesso": {
+    "nome": "Denis Matos",
+    "email": "denis@email.com",
+    "senha": "123",
+    "clube": "Clube D"
+  },
+  "dadosObrigatoriosAusentes": {
+    "nome": "Tales Freitas",
+    "email": "talesis@email.com",
+    "clube": "Clube E"
+  },
+  "executivoJaCadastrado": {
+    "nome": "Denis Matos",
+    "email": "denis@email.com",
+    "senha": "123",
+    "clube": "Clube D"
+  }
+}

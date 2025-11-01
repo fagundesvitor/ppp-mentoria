@@ -1,0 +1,10 @@
+{
+    "executivoSucesso": {
+        "email": "vitor@email.com",
+        "senha": "123"
+    },
+    "executivoInvalido": {
+        "email": "vitor@email.com",
+        "senha": "1233"
+    }
+}

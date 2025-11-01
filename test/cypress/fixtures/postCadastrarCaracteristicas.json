@@ -1,0 +1,10 @@
+{
+  "ambidestria": {
+    "destro": { "nome": "Ambidestria - Destro" },
+    "canhoto": { "nome": "Ambidestria - Canhoto" },
+    "ambidestro": { "nome": "Ambidestria - Ambidestro" }
+  },
+  "dadosObrigatoriosAusentes": {
+    "nome": ""
+  }
+}

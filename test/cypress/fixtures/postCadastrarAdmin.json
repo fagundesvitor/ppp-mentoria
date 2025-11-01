@@ -1,0 +1,16 @@
+{
+  "sucesso": {
+    "nome": "Julio de Lima",
+    "email": "juliodelima@email.com",
+    "senha": "1234"
+  },
+  "dadosObrigatoriosAusentes": {
+    "nome": "Julio de Lima",
+    "email": "juliodelima@email.com"
+  },
+  "adminJaCadastrado": {
+    "nome": "Julio de Lima",
+    "email": "juliodelima@email.com",
+    "senha": "1234"
+  }
+}
