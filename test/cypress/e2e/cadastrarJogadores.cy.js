@@ -1,14 +1,6 @@
 /// <reference types="cypress" />
 
 describe('POST /jogadores', () => {
-    let postCadastrarJogador;
-
-    before(() => {
-        cy.fixture('postCadastrarJogador').then((data) => {
-            postCadastrarJogador = data;
-        });
-    });
-
     it('Deve retornar 201 quando cadastrar Jogador com sucesso', function () {
         cy.obterTokenAdmin().then((token) => {
             cy.request({
@@ -18,7 +10,22 @@ describe('POST /jogadores', () => {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`
                 },
-                body: postCadastrarJogador.jogador1,
+                body: {
+                    "nomeCompleto": "Anderson Silva",
+                    "apelido": "Anderson Silva",
+                    "dataNascimento": "1987-10-26",
+                    "inicioContrato": "2024-01-01",
+                    "fimContrato": "2027-12-31",
+                    "multaRescisoria": 30.000,
+                    "clubeAtual": "Ibis",
+                    "caracteristicas": [
+                        "Ofensivo",
+                        "Rápido"
+                    ],
+                    "posicoes": [
+                        "Volante"
+                    ]
+                },
                 failOnStatusCode: false
             }).then((response) => {
                 expect(response.status).to.eq(201);
@@ -35,7 +42,22 @@ describe('POST /jogadores', () => {
                     'Content-Type': 'application/json'
                     //Authorization: `Bearer ${token}`
                 },
-                body: postCadastrarJogador.jogador1,
+                body: {
+                    "nomeCompleto": "Anderson Silva",
+                    "apelido": "Anderson Silva",
+                    "dataNascimento": "1987-10-26",
+                    "inicioContrato": "2024-01-01",
+                    "fimContrato": "2027-12-31",
+                    "multaRescisoria": 30.000,
+                    "clubeAtual": "Ibis",
+                    "caracteristicas": [
+                        "Ofensivo",
+                        "Rápido"
+                    ],
+                    "posicoes": [
+                        "Volante"
+                    ]
+                },
                 failOnStatusCode: false
             }).then((response) => {
                 expect(response.status).to.eq(401);
@@ -51,7 +73,22 @@ describe('POST /jogadores', () => {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`
                     },
-                    body: postCadastrarJogador.jogador1,
+                    body: {
+                        "nomeCompleto": "Anderson Silva",
+                        "apelido": "Anderson Silva",
+                        "dataNascimento": "1987-10-26",
+                        "inicioContrato": "2024-01-01",
+                        "fimContrato": "2027-12-31",
+                        "multaRescisoria": 30.000,
+                        "clubeAtual": "Ibis",
+                        "caracteristicas": [
+                            "Ofensivo",
+                            "Rápido"
+                        ],
+                        "posicoes": [
+                            "Volante"
+                        ],
+                    },
                     failOnStatusCode: false
                 }).then((response) => {
                     expect(response.status).to.eq(403);

@@ -2,23 +2,24 @@
 
 describe('POST /caracteristicas', () => {
     it('Deve retornar 201 quando a posição Falso 9 for cadastrada com sucesso', () => {
-        cy.fixture('postCadastrarPosicao').then((posicoes) => {
-            cy.obterTokenAdmin().then((token) => {
-                cy.request({
-                    method: 'POST',
-                    url: 'http://localhost:3000/posicoes',
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: posicoes.falsoNove,
-                    failOnStatusCode: false
-                }).then((response) => {
-                    expect(response.status).to.eq(201);
-                });
+        cy.obterTokenAdmin().then((token) => {
+            cy.request({
+                method: 'POST',
+                url: 'http://localhost:3000/caracteristicas',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: {
+                    nome: "Inteligente",
+                },
+                failOnStatusCode: false
+            }).then((response) => {
+                expect(response.status).to.eq(201);
             });
         });
     });
+
 
     it('Deve retornar 400 quando dados obrigatórios estiverem ausentes', function () {
         cy.obterTokenAdmin().then((token) => {
@@ -78,20 +79,20 @@ describe('POST /caracteristicas', () => {
     });
 
     it('Deve retornar 409 quando característica já estiver cadastrada', function () {
-        cy.fixture('postCadastrarPosicao').then((posicoes) => {
-            cy.obterTokenAdmin().then((token) => {
-                cy.request({
-                    method: 'POST',
-                    url: 'http://localhost:3000/posicoes',
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: posicoes.falsoNove,
-                    failOnStatusCode: false
-                }).then((response) => {
-                    expect(response.status).to.eq(409);
-                });
+        cy.obterTokenAdmin().then((token) => {
+            cy.request({
+                method: 'POST',
+                url: 'http://localhost:3000/caracteristicas',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: {
+                    nome: "Inteligente",
+                },
+                failOnStatusCode: false
+            }).then((response) => {
+                expect(response.status).to.eq(409);
             });
         });
     });

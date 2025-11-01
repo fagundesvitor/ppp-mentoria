@@ -1,14 +1,6 @@
 /// <reference types="cypress" />
 
 describe('POST /executivo', () => {
-    let postCadastrarExecutivo;
-
-    before(() => {
-        cy.fixture('postCadastrarExecutivo.json').then((data) => {
-            postCadastrarExecutivo = data;
-        });
-    });
-
     it('Deve retornar 201 quando cadastrar Executivo com sucesso', () => {
         cy.request({
             method: 'POST',
@@ -17,10 +9,13 @@ describe('POST /executivo', () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: postCadastrarExecutivo.sucesso
+            body: {
+                "nome": "Denis Matos",
+                "email": "denis@email.com",
+                "senha": "123",
+                "clube": "Clube D"
+            },
         }).then((response) => {
-            // Se quiser ver o body no log:
-            cy.log(JSON.stringify(response.body));
             expect(response.status).to.eq(201);
         });
     });
@@ -33,7 +28,12 @@ describe('POST /executivo', () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: postCadastrarExecutivo.dadosObrigatoriosAusentes
+            body: {
+                "nome": "Denis Matos",
+                "email": "denis@email.com",
+                // senha ausente
+                "clube": "Clube D"
+            },
         }).then((response) => {
             expect(response.status).to.eq(400);
         });
@@ -47,7 +47,12 @@ describe('POST /executivo', () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: postCadastrarExecutivo.executivoJaCadastrado
+            body: {
+                "nome": "Vitor Fagundes",
+                "email": "vitor@email.com",
+                "senha": "123",
+                "clube": "Clube A"
+            }
         }).then((response) => {
             expect(response.status).to.eq(409);
         });
