@@ -3,6 +3,7 @@ import { sleep, check } from 'k6' //Importação de função
 import { pegarBaseURL } from '../utils/variaveis.js';
 
 export function obterTokenAdmin() {
+    
     const url = pegarBaseURL() + '/login';
 
     const payload = JSON.stringify({
@@ -23,7 +24,7 @@ export function obterTokenAdmin() {
 }
 
 export function obterTokenExecutivo() {
-    const url = pegarBaseURL() + '/login';
+    const url = 'http://localhost:3000/login';
 
     const payload = JSON.stringify({
         "email": "vitor@email.com",
