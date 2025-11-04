@@ -2,7 +2,7 @@ name: CI PPP
 
 # gatilhos 
 on: 
-  workflow_dispatch:
+  workflow_dispatch: null
 
 jobs: 
   testes:
