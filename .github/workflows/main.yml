@@ -13,12 +13,12 @@ jobs:
     #[variaveis] (variáveis de ambiente, chaves de acesso a plataformas, etc...)
     env: 
       API_BASE_URL: 'http:localhost:3000'
-      PORT: 4000
+      PORT: 3000
 
     # [acoes ou passsos]
     steps: 
 
-      - name: Checkout do Repositoriio
+      - name: Checkout do Repositório
         uses: actions/checkout@v4
 
       - name: Instalando as dependências
