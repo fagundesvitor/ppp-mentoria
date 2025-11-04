@@ -81,7 +81,7 @@ Os testes de performance avaliam como a API se comporta sob carga, simulando mú
 - **Localização dos testes:** Os scripts de teste estão na pasta `test/performance/`.
 - **Como executar um teste de performance:**
     1. Instale o [k6](https://k6.io/docs/getting-started/installation/) em sua máquina.
-    2. Execute o comando abaixo na raiz do projeto, substituindo `nomedoarquivo` pelo nome do arquivo desejado:
+    2. Execute o comando abaixo na raiz do projeto, substituindo `nome-do-arquivo` pelo nome do arquivo desejado:
         ```bash
         k6 run test/performance/[nome-do-arquivo].test.js
         ```
