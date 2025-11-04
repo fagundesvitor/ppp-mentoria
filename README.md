@@ -49,3 +49,49 @@ Consulte o arquivo `resources/swagger.yaml` para detalhes dos endpoints e modelo
 
 ## Observações
 - Este projeto é apenas para fins de demonstração e não deve ser usado em produção sem persistência de dados e segurança adequada.
+
+---
+
+## 🧪 Testes Automatizados Funcionais
+
+Os testes automatizados funcionais garantem que as principais funcionalidades da API estejam funcionando corretamente, simulando o uso real do sistema.
+
+- **Ferramenta utilizada:** [Cypress](https://www.cypress.io/) 🚦
+- **Localização dos testes:** Os testes estão localizados na pasta `cypress/` do projeto.
+- **Como executar os testes:**
+    1. Certifique-se de que as dependências estão instaladas (`npm install`).
+    2. Execute o comando abaixo na raiz do projeto:
+        ```bash
+        npm test
+        ```
+    3. O Cypress irá rodar todos os testes automatizados e exibir o resultado no terminal.
+
+Esses testes cobrem cenários como:
+- Cadastro e autenticação de usuários (admin e executivo)
+- Cadastro e consulta de jogadores
+- Validação das regras de negócio e autenticação
+
+---
+
+## 🚀 Testes de Performance
+
+Os testes de performance avaliam como a API se comporta sob carga, simulando múltiplos acessos simultâneos.
+
+- **Ferramenta utilizada:** [k6](https://k6.io/) 📈
+- **Localização dos testes:** Os scripts de teste estão na pasta `test/performance/`.
+- **Como executar um teste de performance:**
+    1. Instale o [k6](https://k6.io/docs/getting-started/installation/) em sua máquina.
+    2. Execute o comando abaixo na raiz do projeto, substituindo `nomedoarquivo` pelo nome do arquivo desejado:
+        ```bash
+        k6 run test/performance/[nome-do-arquivo].test.js
+        ```
+    3. O k6 irá simular múltiplos usuários acessando a API e gerar um relatório detalhado no terminal.
+
+Esses testes ajudam a identificar gargalos, limites e pontos de melhoria na performance da API.
+
+---
+
+## 📚 Referências
+
+- [Documentação Cypress](https://docs.cypress.io/)
+- [Documentação k6](https://k6.io/docs/)
