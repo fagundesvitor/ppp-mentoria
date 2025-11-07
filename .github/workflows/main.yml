@@ -27,12 +27,6 @@ jobs:
       - name: Executar os testes
         run: npm test
 
-      - name: Merge dos relatórios Mochawesome
-        run: npx mochawesome-merge mochawesome-report/*.json > mochawesome-report/merged.json
-
-      - name: Gerar relatório HTML final
-        run: npx marge mochawesome-report/merged.json -f report -o mochawesome-report
-
       - name: Upload do relatório Mochawesome
         uses: actions/upload-artifact@v4
         with:
