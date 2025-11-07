@@ -5,35 +5,43 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  
+
 jobs:
   test:
-    # Config do SO (windows/linux/mac, chrome/firefox/edge, ...)
     runs-on: ubuntu-latest
 
-    # Variáveis de ambiente
     env:
       API_BASE_URL: 'http://localhost:3000'
       PORT: 3000
 
-    # Ações ou passos
     steps:
-      # Projetos (aplicações, projeto de teste, etc...)
       - name: Checkout do Repositório
         uses: actions/checkout@v4
 
-      # Dependências do projeto (node/npm, java/maven, gradle, python/pip, ...)
       - name: Instalando as dependências
         run: npm install
 
       - name: Iniciar o servidor de aplicação
         run: npm start &
 
+      - name: Esperar o servidor subir
+        run: npx wait-on http://localhost:3000
+
       - name: Executar os testes
         run: npm test
+
+      - name: Merge dos relatórios Mochawesome
+        run: npx mochawesome-merge mochawesome-report/*.json > mochawesome-report/merged.json
+
+      - name: Gerar relatório HTML final
+        run: npx marge mochawesome-report/merged.json -f report -o mochawesome-report
 
       - name: Upload do relatório Mochawesome
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
           path: mochawesome-report/
+
+      - name: Finalizar servidor Node.js
+        if: always()
+        run: pkill node || true
