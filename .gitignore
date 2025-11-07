@@ -13,3 +13,4 @@ build/
 ./test/cypress/videos/
 screenshot/
 mochawesome-report/
+cypress/
