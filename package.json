@@ -1,7 +1,7 @@
 {
-  "name": "ppp-mentoria",
+  "name": "ppp-buscar-jogadores-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "API para consultar situação e características de jogadores de futebol.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fagundesvitor/ppp-mentoria.git"
+    "url": "git+https://github.com/fagundesvitor/ppp-buscar-jogadores-api.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fagundesvitor/ppp-mentoria/issues"
+    "url": "https://github.com/fagundesvitorppp-buscar-jogadores-api/issues"
   },
-  "homepage": "https://github.com/fagundesvitor/ppp-mentoria#readme",
+  "homepage": "https://github.com/fagundesvitor/ppp-buscar-jogadores-api#readme",
   "dependencies": {
     "express": "^5.1.0",
     "js-yaml": "^4.1.0",
