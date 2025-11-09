@@ -23,7 +23,7 @@ jobs:
         run: npm start &
 
       - name: Executar os testes
-        run: npm run test-and-report
+        run: npm run test
 
       - name: Upload do relatório Mochawesome
         uses: actions/upload-artifact@v4
