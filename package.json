@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "cypress run --reporter mochawesome --reporter-options reportDir=test/cypress/reports/mochawesome,overwrite=false,html=false,json=true"
+    "test": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "cypress": "^13.17.0",
+    "marge": "^1.0.1",
     "mochawesome": "^7.1.4",
     "mochawesome-merge": "^5.0.0",
     "mochawesome-report-generator": "^6.3.2"

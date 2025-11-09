@@ -11,6 +11,7 @@ build/
 ./cypress/videos/
 ./test/cypress/screenshots/
 ./test/cypress/videos/
+./test/cypress/mochawesome/
 screenshot/
 mochawesome-report/
 cypress/
