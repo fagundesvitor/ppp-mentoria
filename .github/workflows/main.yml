@@ -25,11 +25,15 @@ jobs:
       - name: Executar os testes
         run: npm run test
 
+      - name: Listar arquivos do relatório
+        run: ls -R test/cypress/reports/ || echo "Diretório não encontrado"
+
       - name: Upload do relatório Mochawesome
         uses: actions/upload-artifact@v4
+        if: always() # Executa mesmo se os testes falharem
         with:
           name: mochawesome-report
-          path: mochawesome-report/
+          path: test/cypress/reports/
 
       - name: Finalizar servidor Node.js
         if: always()
