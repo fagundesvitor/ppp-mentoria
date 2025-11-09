@@ -17,12 +17,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Instalando as dependências
+          echo "Instalando as dependências..."
         run: npm install
 
       - name: Iniciar o servidor de aplicação
+          echo "Iniciando servidor..."
         run: npm start &
 
       - name: Executar os testes
+          echo "Executando testes..."
         run: npm run test
 
       - name: Listar arquivos do relatório
