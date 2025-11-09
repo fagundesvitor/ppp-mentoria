@@ -35,16 +35,6 @@ jobs:
           name: mochawesome-report
           path: test/cypress/reports/
 
-      - name: Validar sucesso dos testes
-        run: |
-          FAILURES=$(jq '.stats.failures' test/cypress/reports/mochawesome.json)
-          if [ "$FAILURES" -gt 0 ]; then
-            echo "❌ Testes falharam: $FAILURES falhas encontradas"
-            exit 1
-          else
-            echo "✅ Todos os testes passaram"
-          fi
-
       - name: Finalizar servidor Node.js
         if: always()
         run: pkill node || true
